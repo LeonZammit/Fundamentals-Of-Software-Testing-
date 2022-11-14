@@ -1,6 +1,7 @@
 package com.marketalertumassignment1.task2webtestautomation.test;
 
 import com.marketalertumassignment1.Item;
+import com.marketalertumassignment1.SiteLoader;
 import com.marketalertumassignment1.WebAPI;
 import com.marketalertumassignment1.data.KlikkDataExtract;
 import com.marketalertumassignment1.task2webtestautomation.AuthenticationPageObject;
@@ -22,6 +23,7 @@ public class WebsiteSteps {
     MyAlertsPageObject myAlerts = null;
     WebDriver driver;
     WebAPI api = new WebAPI();
+    SiteLoader load;
 
     public void setUpMarketAlert(){
         if(driver == null)
@@ -45,7 +47,7 @@ public class WebsiteSteps {
         driver.get("https://www.marketalertum.com/");
         driver.manage().window().maximize();
 
-        myAlerts = new MyAlertsPageObject(new WebAPI(), driver);
+        myAlerts = new MyAlertsPageObject(driver);
     }
 
     @Given("I am a user of marketalertum")

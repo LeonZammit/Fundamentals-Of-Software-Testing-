@@ -36,7 +36,6 @@ public class WebAPI implements MarketUmManager {
         //Executing the response requested. - POST
         Response response = client.newCall(request).execute();
         return response.code();
-
     }
 
     //Delete Method

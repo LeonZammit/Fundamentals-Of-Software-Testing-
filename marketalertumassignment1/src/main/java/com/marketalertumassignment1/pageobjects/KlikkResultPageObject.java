@@ -25,8 +25,7 @@ public class KlikkResultPageObject {
 
         String description;
             description = Driver.findElement(By.xpath("//*[@id=\"app\"]/main/div[1]/div[1]/div/div[2]/div/div[1]/div")).getText();
-            System.out.println("Description of the item: \n" + description);
-
+            //System.out.println("Description of the item: \n" + description);
 
         String priceInCents = Driver.findElement(By.xpath("//*[@id=\"app\"]/main/div[1]/div[1]/div/div[1]/div[2]/div[5]/p/b")).getText();
 

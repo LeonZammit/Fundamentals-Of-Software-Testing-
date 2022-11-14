@@ -1,5 +1,6 @@
 package com.marketalertumassignment1.task2webtestautomation;
 
+import com.marketalertumassignment1.ElectronicScraper;
 import com.marketalertumassignment1.Item;
 import com.marketalertumassignment1.WebAPI;
 import com.marketalertumassignment1.pageobjects.KlikkResultPageObject;
@@ -14,27 +15,30 @@ import java.util.List;
 
 public class MyAlertsPageObject {
 
-    WebAPI api;
-    WebDriver driver;
 
-    public MyAlertsPageObject(WebAPI api, WebDriver driver){
+    WebDriver driver;
+    WebAPI api = new WebAPI();
+    ElectronicScraper scraper;
+
+    public MyAlertsPageObject(WebDriver driver){
         this.driver = driver;
-        this.api = api;
-        System.out.print(driver);
+        //System.out.print(driver);
+         scraper = new ElectronicScraper(); //Creating scraper
+
+        scraper.setMarketUmManager(api);
     }
 
     public void PostAlerts(List<Item> items) throws InterruptedException, IOException {
-
-        api.deleteRequest();
+        scraper.deleteRequest();
 
         for(int i = 0; i < items.size(); i++){
-            System.out.println(api.postRequest(items.get(i).serialize()));
+            System.out.println(scraper.postRequest(items.get(i).serialize()));
         }
     }
 
     public void PostAlertWithType(int alertType) throws IOException {
         Item item = new Item(alertType, "test", "test", "test", "test", 2200);
-        api.postRequest(item.serialize());
+        scraper.postRequest(item.serialize());
     }
 
     public String getFileName() {
@@ -96,7 +100,7 @@ public class MyAlertsPageObject {
                 counter++;
         }
 
-        System.out.println(find + " " + tagName + " " + row + " Counter: " + counter + " Total Items: " + items.size());
+        //System.out.println(find + " " + tagName + " " + row + " Counter: " + counter + " Total Items: " + items.size());
         return (counter == items.size()) ? true : false;
     }
 }

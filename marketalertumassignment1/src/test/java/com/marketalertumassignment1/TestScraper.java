@@ -3,6 +3,7 @@ package com.marketalertumassignment1;
 import com.marketalertumassignment1.managerutilities.MarketUmManager;
 import com.marketalertumassignment1.spies.MarketUmManagerSpy;
 import com.marketalertumassignment1.stubs.*;
+import io.cucumber.java.bs.I;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -87,7 +88,6 @@ public class TestScraper {
         Boolean resultNotFound  = scraper.getResult();
         //Verify
         Assertions.assertFalse(resultNotFound);
-
     }
 
     @Test
@@ -95,10 +95,11 @@ public class TestScraper {
 
         //Setup
         MarketUmManagerSpy marketUmManager = new MarketUmManagerSpy(); //Creating spy
+        Item item = new Item(6, "test", "test", "test", "test", 2000); //Dummy Objects
         ElectronicScraper scraper = new ElectronicScraper(); //Creating scraper
         scraper.setMarketUmManager(marketUmManager); //Telling the scraper to use this spy.
         //Exercise
-        int postReceived = scraper.postRequest();
+        int postReceived = scraper.postRequest(item.serialize());
         //Verify
         Assertions.assertEquals(1,postReceived);
     }

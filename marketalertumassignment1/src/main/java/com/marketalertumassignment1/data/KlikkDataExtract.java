@@ -10,7 +10,6 @@ import java.util.List;
 
 public class KlikkDataExtract {
 
-
     public static WebDriver SetupDriver(){
         System.setProperty("webdriver.chrome.driver", "/Users/leonz/webtesting/chromedriver.exe");
         return new ChromeDriver();

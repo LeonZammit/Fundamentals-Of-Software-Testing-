@@ -41,9 +41,9 @@ public class ElectronicScraper {
         }
     }
 
-    public int postRequest() throws IOException {
+    public int postRequest(String itemInputString) throws IOException {
         if (marketUmManager != null) {
-            responseCode = marketUmManager.postRequest("");
+            responseCode = marketUmManager.postRequest(itemInputString);
         }
         return responseCode;
     }
@@ -71,5 +71,4 @@ public class ElectronicScraper {
     public void setResultManager(CheckResultManager checkResultManager) {
         this.checkResultManager = checkResultManager;
     }
-
 }

@@ -25,7 +25,7 @@ public class AuthenticationPageObject {
         WebElement searchField = driver.findElement(By.id("UserId"));
         searchField.sendKeys(userID);
         WebElement submitButton = driver.findElement(By.xpath("/html/body/div/main/form/input[2]"));
-        submitButton.submit();
+        submitButton.click();
     }
 
     public String getUrl() {
